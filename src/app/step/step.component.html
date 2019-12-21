@@ -1,0 +1,4 @@
+<h3>krok {{index + 1}} z {{dataService.questionArray.length}}</h3>
+<app-question [question]="dataService.questionArray[index]" [answersMap]="dataService.answersMap"></app-question>
+
+<a (click)="next()">{{(index + 1 < dataService.questionArray.length ? 'DALEJ >' : 'SPRAWDz materac dla was' ) | uppercase}}</a>
