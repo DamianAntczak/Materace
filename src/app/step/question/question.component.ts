@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatRadioChange} from '@angular/material';
 import {DataService} from '../../data.service';
+import {MatRadioButton} from '@angular/material/radio/typings/radio';
 
 @Component({
   selector: 'app-question',
@@ -11,10 +12,10 @@ export class QuestionComponent implements OnInit {
   @Input() question: string;
   @Input() answersMap: Map<string, any>;
   @Input() index: number;
+  @Input() selectedValue: MatRadioButton ;
 
   @Output() selectedValuesMapEmitter: EventEmitter<Map<string, number>> = new EventEmitter<Map<string, number>>();
 
-  selectedValue: any;
   selectedValuesMap: Map<string, number> = new Map<string, number>()
 
   constructor(dataService: DataService) { }

@@ -2,6 +2,7 @@ import {Component, Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MatRadioChange} from '@angular/material';
 import {DataService} from './data.service';
+import {MatRadioButton} from '@angular/material/radio/typings/radio';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import {DataService} from './data.service';
 export class AppComponent implements OnInit {
   title = 'Konfigurator materacy';
   index = 0;
+  selectedValue: MatRadioButton;
 
   constructor() {
   }
@@ -22,5 +24,8 @@ export class AppComponent implements OnInit {
 
   onloadNextClick() {
     this.index++;
+    console.log(this.selectedValue);
+    this.selectedValue = undefined;
+    console.log("onloadNextClick: "  + this.selectedValue);
   }
 }

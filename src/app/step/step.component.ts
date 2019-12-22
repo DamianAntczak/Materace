@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatRadioChange} from '@angular/material';
 import {DataService} from '../data.service';
 import {KeyValue} from '@angular/common';
+import {MatRadioButton} from '@angular/material/radio/typings/radio';
 
 @Component({
   selector: 'app-step',
@@ -10,6 +11,7 @@ import {KeyValue} from '@angular/common';
 })
 export class StepComponent implements OnInit {
   @Input() index: number;
+  @Input() selectedValue: MatRadioButton;
   @Output() onloadNextClick = new EventEmitter<void>();
 
   buttonText: string;
