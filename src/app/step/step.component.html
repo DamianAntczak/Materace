@@ -1,4 +1,19 @@
-<h3>krok {{index + 1}} z {{dataService.questionArray.length}}</h3>
-<app-question [question]="dataService.questionArray[index]" [answersMap]="dataService.answersMap"></app-question>
+<div *ngIf="index  < dataService.questionArray.length">
+  <h3>krok {{index + 1}} z {{dataService.questionArray.length}}</h3>
+  <app-question [question]="dataService.questionArray[index]" [answersMap]="dataService.answersMap" (selectedValuesMapEmitter)="onSelectedValuesMapChange($event)"></app-question>
 
-<a (click)="next()">{{(index + 1 < dataService.questionArray.length ? 'DALEJ >' : 'SPRAWDz materac dla was' ) | uppercase}}</a>
+  <button type="button" class="btn btn-link float-right" (click)="next(dataService.questionArray[index])">{{(index + 1 < dataService.questionArray.length ? 'DALEJ >' : 'SPRAWDz materac dla was' ) | uppercase}}</button>
+  <!--<ul>-->
+  <!--  <li *ngFor="let mattress of dataService.mattresses[10]">{{mattress}}</li>-->
+  <!--</ul>-->
+</div>
+
+<div *ngIf="index + 1 > dataService.questionArray.length">
+  <h2>MATERACE W WASZYM RYTMIE:</h2>
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let selected of matchMattresses | keyvalue : valueDescOrder">
+      {{selected.key}} {{selected.value}}
+      <img class="img-fluid" src="https://hilding.pl/png/product/mambo.jpg" />
+    </div>
+  </div>
+</div>

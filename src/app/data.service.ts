@@ -10,6 +10,7 @@ export class DataService {
   questionSet: Set<string>;
   answersMap: Map<string, Array<any>>;
   questionArray: string[];
+  mattresses: string[][] = new Array<Array<string>>();
 
 
   constructor(private http: HttpClient) {
@@ -19,7 +20,6 @@ export class DataService {
     this.http.get('assets/konfigurator.csv', {responseType: 'text'})
       .subscribe(
         data => {
-          console.log(data);
           let allTextLines = data.split(/\r\n|\n/);
           let headers = allTextLines[0].split(';');
           let answers = allTextLines[1].split(';');
@@ -28,24 +28,13 @@ export class DataService {
           this.questionSet = new Set(headers);
           this.questionSet.delete('');
           this.questionArray = Array.from(this.questionSet);
-
-          for (let i = 0; i < allTextLines.length; i++) {
-            // split content based on comma
-            let data = allTextLines[i].split(',');
-            if (data.length == headers.length) {
-              let tarr = [];
-              for (let j = 0; j < headers.length; j++) {
-                tarr.push(data[j]);
-              }
-              lines.push(tarr);
-            }
-          }
-          this.csvData = lines;
+          this.csvData = this.loadRawData(allTextLines, headers, lines);
 
           this.answersMap = new Map<string, Array<any>>();
           this.questionSet.forEach(question => {
             let answersIndex = new Array<number>();
             headers.forEach((header, index) => {
+              this.mattresses[index] = new Array<string>();
               if (question === header) {
                 answersIndex.push(index);
               }
@@ -57,6 +46,13 @@ export class DataService {
             });
             this.answersMap.set(question, answersPerQuestion);
 
+            console.log(this.mattresses);
+            this.csvData.forEach((line, lineIndex) => {
+              line.forEach((column, columnIndex) => {
+                this.mattresses[columnIndex][lineIndex] = column;
+              });
+            });
+
           });
           return this.answersMap;
         },
@@ -65,6 +61,21 @@ export class DataService {
           return null;
         }
       );
+  }
+
+  private loadRawData(allTextLines: string[], headers: string[], lines: any[]): Array<Array<any>>{
+    for (let i = 0; i < allTextLines.length; i++) {
+      // split content based on comma
+      let data = allTextLines[i].split(';');
+      if (data.length == headers.length) {
+        let tarr = [];
+        for (let j = 0; j < headers.length; j++) {
+          tarr.push(data[j]);
+        }
+        lines.push(tarr);
+      }
+    }
+    return lines;
   }
 
   public getQuestionArray() {
