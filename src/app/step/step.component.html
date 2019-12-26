@@ -9,13 +9,5 @@
 </div>
 
 <div *ngIf="index + 1 > dataService.questionArray.length">
-  <h2>MATERACE W WASZYM RYTMIE:</h2>
-  <div class="row">
-    <div class="col-sm-4" *ngFor="let selected of matchMattresses | keyvalue : valueDescOrder">
-      {{selected.key}} {{selected.value}}
-      <img class="img-fluid" src="https://hilding.pl/png/product/mambo.jpg" />
-      <p>Nowoczesny materac wyposażony w 7-strefowy
-        system drobnych...</p>
-    </div>
-  </div>
+  <app-summary [matchMattresses]="matchMattresses" [showEmbed]="showEmbed"></app-summary>
 </div>

@@ -9,13 +9,15 @@ import { StepComponent } from './step/step.component';
 import { QuestionComponent } from './step/question/question.component';
 import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StepComponent,
     QuestionComponent,
-    HeaderComponent
+    HeaderComponent,
+    SummaryComponent
   ],
     imports: [
         BrowserModule,

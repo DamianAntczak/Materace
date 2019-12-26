@@ -17,6 +17,7 @@ export class StepComponent implements OnInit {
   buttonText: string;
   selectedValuesMap: Map<string, number>;
   matchMattresses: Map<string, number> = new Map<string, number>();
+  showEmbed = false;
 
   constructor(public dataService: DataService) {
   }
@@ -56,7 +57,4 @@ export class StepComponent implements OnInit {
     });
   }
 
-  valueDescOrder = (a: KeyValue<string, number>, b: KeyValue<string, number>): number => {
-    return b.value - a.value;
-  }
 }

@@ -63,7 +63,7 @@ export class DataService {
       );
   }
 
-  private loadRawData(allTextLines: string[], headers: string[], lines: any[]): Array<Array<any>>{
+  private loadRawData(allTextLines: string[], headers: string[], lines: any[]): Array<Array<any>> {
     for (let i = 0; i < allTextLines.length; i++) {
       // split content based on comma
       let data = allTextLines[i].split(';');
