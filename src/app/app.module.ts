@@ -13,6 +13,7 @@ import {HeaderComponent} from './header/header.component';
 import {StartComponent} from './start/start.component';
 import { ConfiguratorComponent } from './configurator/configurator.component';
 import { SummaryComponent } from './summary/summary.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 const appRoutes: Routes = [
   {path: 'start', component: StartComponent},
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatRadioModule,
     FormsModule,
+    FontAwesomeModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: true} // <-- debugging purposes only

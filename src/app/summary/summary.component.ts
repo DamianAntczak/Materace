@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {KeyValue} from "@angular/common";
+import {KeyValue} from '@angular/common';
+import {Router} from '@angular/router';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-summary',
@@ -11,7 +14,9 @@ export class SummaryComponent implements OnInit {
   @Input() matchMattresses: Map<string, number> = new Map<string, number>();
   @Input() showEmbed = false;
 
-  constructor() { }
+  faSearch = faSearch;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,4 +28,12 @@ export class SummaryComponent implements OnInit {
   playVideo() {
     this.showEmbed = true;
   }
+
+  restart() {
+    this.router.navigate(['/start']);
+  }
+
+  print() {
+  }
+
 }
