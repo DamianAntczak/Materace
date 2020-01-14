@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {KeyValue} from '@angular/common';
 import {Router} from '@angular/router';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faPlay } from '@fortawesome/free-solid-svg-icons';
+import {DataService} from '../data.service';
 
 
 @Component({
@@ -15,8 +16,10 @@ export class SummaryComponent implements OnInit {
   @Input() showEmbed = false;
 
   faSearch = faSearch;
+  faPlay = faPlay;
+  link = 'https://www.youtube.com/embed/1_-GMcbhMx8';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -25,7 +28,10 @@ export class SummaryComponent implements OnInit {
     return b.value - a.value;
   }
 
-  playVideo() {
+  playVideo(selectedMattress) {
+    let data = this.dataService.getDataAboutMattress(selectedMattress);
+    console.log(data);
+    this.link = data[2];
     this.showEmbed = true;
   }
 

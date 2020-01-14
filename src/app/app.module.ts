@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 
+import {SafePipe} from './safepipe';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     StartComponent,
     ConfiguratorComponent,
     HeaderComponent,
-    SummaryComponent
+    SummaryComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
