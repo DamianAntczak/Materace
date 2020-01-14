@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Papa, ParseResult} from 'ngx-papaparse';
 import {yearsPerRow} from '@angular/material';
+import {StepData} from './step-data';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class DataService {
   mattresses: string[][] = new Array<Array<string>>();
   mattressesPrices: ParseResult;
 
+  matrix: ParseResult;
+  stepData: StepData;
 
   constructor(private http: HttpClient, private papa: Papa) {
   }
@@ -25,6 +28,7 @@ export class DataService {
     // const csvData = '"Hello","World!"';
 
     this.loadMattressesPrices();
+    this.loadMattressesQuestion();
   }
 
   private loadMattressesPrices() {
@@ -38,6 +42,53 @@ export class DataService {
             }
           });
         });
+  }
+
+  private loadMattressesQuestion() {
+    this.http.get('assets/konfigurator materace - najnowsza wersja.csv', {responseType: 'text'})
+      .subscribe(
+        data => {
+          this.papa.parse(data, {
+            complete: (result) => {
+              console.log('New Matrix: ', result);
+              this.matrix = result;
+              this.getQuestionForSteps(1);
+            }
+          });
+        });
+
+
+  }
+
+  public getQuestionForSteps(stepIndex: number) {
+    const answerArray = [];
+    let question = '';
+    let matrixLength = 0;
+    this.matrix.data.forEach((item, rowIndex) => {
+      if (rowIndex === 1) {
+        question = item[stepIndex];
+      } else if (item[stepIndex] !== undefined && item[stepIndex] !== '') {
+        answerArray.push({name: item[stepIndex], start: rowIndex, stop: 0});
+      }
+      matrixLength++;
+    });
+    answerArray.forEach((item, index) => {
+      if (index < answerArray.length - 1) {
+        console.log(answerArray[index + 1].start);
+        answerArray[index].stop = answerArray[index + 1].start - 1;
+      } else {
+        answerArray[index].stop = matrixLength - 1;
+      }
+    });
+    const data = {question, answerArray};
+    console.log(data);
+    this.stepData = data;
+  }
+
+  public getQuestionString() {
+    if (this.stepData !== undefined) {
+      return this.stepData.question;
+    }
   }
 
   private loadMattressesMatrix() {

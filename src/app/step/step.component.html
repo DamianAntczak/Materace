@@ -1,6 +1,7 @@
 <div *ngIf="index  < dataService.questionArray.length">
   <p>krok {{index + 1}} z {{dataService.questionArray.length}}</p>
-  <app-question [selectedValue]="selectedValue" [question]="dataService.questionArray[index]" [answersMap]="dataService.answersMap" (selectedValuesMapEmitter)="onSelectedValuesMapChange($event)"></app-question>
+  {{dataService.questionArray[index]}}
+  <app-question [selectedValue]="selectedValue" [question]="dataService.stepData.question" [answersMap]="dataService.stepData.answerArray" (selectedValuesMapEmitter)="onSelectedValuesMapChange($event)"></app-question>
 
   <button type="button" class="btn btn-link float-right" (click)="next(dataService.questionArray[index])">{{(index + 1 < dataService.questionArray.length ? 'DALEJ >' : 'SPRAWDz materac dla was' ) | uppercase}}</button>
   <!--<ul>-->
