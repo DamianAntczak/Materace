@@ -1,14 +1,10 @@
-<div *ngIf="index  < dataService.questionArray.length">
-  <p>krok {{index + 1}} z {{dataService.questionArray.length}}</p>
-  {{dataService.questionArray[index]}}
+<div *ngIf="index  < questionSize">
+  <p>krok {{index }} z {{questionSize}}</p>
   <app-question [selectedValue]="selectedValue" [question]="dataService.stepData.question" [answersMap]="dataService.stepData.answerArray" (selectedValuesMapEmitter)="onSelectedValuesMapChange($event)"></app-question>
 
-  <button type="button" class="btn btn-link float-right" (click)="next(dataService.questionArray[index])">{{(index + 1 < dataService.questionArray.length ? 'DALEJ >' : 'SPRAWDz materac dla was' ) | uppercase}}</button>
-  <!--<ul>-->
-  <!--  <li *ngFor="let mattress of dataService.mattresses[10]">{{mattress}}</li>-->
-  <!--</ul>-->
+  <button type="button" class="btn btn-link float-right" (click)="next(dataService.questionArray[index])">{{(index  < questionSize ? 'DALEJ >' : 'SPRAWDz materac dla was' ) | uppercase}}</button>
 </div>
 
-<div *ngIf="index + 1 > dataService.questionArray.length">
+<div *ngIf="index + 1 > questionSize">
   <app-summary [matchMattresses]="matchMattresses" [showEmbed]="showEmbed"></app-summary>
 </div>

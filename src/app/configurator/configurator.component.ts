@@ -7,19 +7,18 @@ import {MatRadioButton} from '@angular/material/radio/typings/radio';
   styleUrls: ['./configurator.component.sass']
 })
 export class ConfiguratorComponent implements OnInit {
-  index = 0;
+  index = 1;
   selectedValue: MatRadioButton;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.index = 0;
+    this.index = 1;
   }
 
   onloadNextClick() {
-    this.index++;
     console.log(this.selectedValue);
     this.selectedValue = undefined;
-    console.log("onloadNextClick: "  + this.selectedValue);
+    console.log('onloadNextClick:' + this.selectedValue);
   }
 }

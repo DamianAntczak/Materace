@@ -1,8 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MatRadioChange} from '@angular/material';
 import {DataService} from '../data.service';
-import {KeyValue} from '@angular/common';
 import {MatRadioButton} from '@angular/material/radio/typings/radio';
+import {Answer} from '../answer';
 
 @Component({
   selector: 'app-step',
@@ -15,46 +14,34 @@ export class StepComponent implements OnInit {
   @Output() onloadNextClick = new EventEmitter<void>();
 
   buttonText: string;
-  selectedValuesMap: Map<string, number>;
   matchMattresses: Map<string, number> = new Map<string, number>();
   showEmbed = false;
+  lastSelectedValue: Answer = undefined;
+  questionSize = 5;
 
   constructor(public dataService: DataService) {
   }
 
   ngOnInit() {
     this.buttonText = 'DALEJ >';
-    this.dataService.loadData();
+    this.dataService.loadData(this.index, 0, 100);
   }
 
   next(question: string) {
     this.onloadNextClick.emit();
+    this.index++;
+    if (this.index  === this.questionSize) {
+      console.log('Load materace');
+      console.log(this.lastSelectedValue);
+      this.matchMattresses = this.dataService.loadProposedMattresses(this.lastSelectedValue.stop, this.questionSize);
+    } else if (this.lastSelectedValue !== undefined) {
+      this.dataService.loadData(this.index, this.lastSelectedValue.start, this.lastSelectedValue.stop);
+    }
   }
 
-  onSelectedValuesMapChange($event: Map<string, number>) {
-    this.selectedValuesMap = $event;
-    let counterArray = Array<number>(this.dataService.mattresses[0].length).fill(0);
-    this.selectedValuesMap.forEach((value, key) => {
-      var answersMap = this.dataService.answersMap.get(key);
-      console.log(answersMap[value]);
-
-      this.dataService.mattresses.forEach((row, index1) => {
-        row.forEach((value1, index2) => {
-          if (index2 === 1 && value1 === answersMap[value]) {
-            console.log('hit - ' + index1);
-          } else if (value1 === '#' && row[1] === answersMap[value]) {
-            counterArray[index2] += 1;
-          }
-        });
-      });
-    });
-
-    counterArray.forEach((value, index1) => {
-      if (value > 0) {
-        console.log(value + ' ' + index1 + ' ' + this.dataService.mattresses[0][index1]);
-        this.matchMattresses.set(this.dataService.mattresses[0][index1], value);
-      }
-    });
+  onSelectedValuesMapChange($event) {
+    console.log($event);
+    this.lastSelectedValue = $event;
   }
 
 }

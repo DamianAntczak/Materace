@@ -24,9 +24,6 @@ export class QuestionComponent implements OnInit {
   }
 
   radioChange($event: MatRadioChange) {
-    console.log($event);
-    console.log(this.question);
-    this.selectedValuesMap.set(this.question, $event.value);
-    this.selectedValuesMapEmitter.emit(this.selectedValuesMap);
+    this.selectedValuesMapEmitter.emit($event.value);
   }
 }

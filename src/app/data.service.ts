@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Papa, ParseResult} from 'ngx-papaparse';
-import {yearsPerRow} from '@angular/material';
 import {StepData} from './step-data';
+import {Answer} from './answer';
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +22,13 @@ export class DataService {
   constructor(private http: HttpClient, private papa: Papa) {
   }
 
-  loadData() {
+  loadData(stepIndex: number, startIndex: number, stopIndex: number) {
     this.loadMattressesMatrix();
 
     // const csvData = '"Hello","World!"';
 
     this.loadMattressesPrices();
-    this.loadMattressesQuestion();
+    this.loadMattressesQuestion(stepIndex, startIndex, stopIndex);
   }
 
   private loadMattressesPrices() {
@@ -44,7 +44,7 @@ export class DataService {
         });
   }
 
-  private loadMattressesQuestion() {
+  private loadMattressesQuestion(stepIndex: number, startIndex: number, stopIndex: number) {
     this.http.get('assets/konfigurator materace - najnowsza wersja.csv', {responseType: 'text'})
       .subscribe(
         data => {
@@ -52,22 +52,34 @@ export class DataService {
             complete: (result) => {
               console.log('New Matrix: ', result);
               this.matrix = result;
-              this.getQuestionForSteps(1);
+              this.getQuestionForSteps(stepIndex, startIndex, stopIndex);
             }
           });
         });
-
-
   }
 
-  public getQuestionForSteps(stepIndex: number) {
-    const answerArray = [];
+  public loadProposedMattresses(rowIndex: number, questionSize: number) {
+    const rowData = this.matrix.data[rowIndex];
+    const matchMattresses: Map<string, number> = new Map<string, number>();
+    console.log(rowData);
+    rowData.forEach((item, index) => {
+      if (index > questionSize && item !== undefined && item !== '') {
+        console.log(item);
+        console.log(this.matrix.data[2][index]);
+        matchMattresses.set(this.matrix.data[2][index], item);
+      }
+    });
+    return matchMattresses;
+  }
+
+  public getQuestionForSteps(stepIndex: number, firstIndex: number, lastIndex: number) {
+    const answerArray: Array<Answer> = [];
     let question = '';
     let matrixLength = 0;
     this.matrix.data.forEach((item, rowIndex) => {
       if (rowIndex === 1) {
         question = item[stepIndex];
-      } else if (item[stepIndex] !== undefined && item[stepIndex] !== '') {
+      } else if (rowIndex >= firstIndex && rowIndex <= lastIndex && item[stepIndex] !== undefined && item[stepIndex] !== '') {
         answerArray.push({name: item[stepIndex], start: rowIndex, stop: 0});
       }
       matrixLength++;
@@ -85,11 +97,7 @@ export class DataService {
     this.stepData = data;
   }
 
-  public getQuestionString() {
-    if (this.stepData !== undefined) {
-      return this.stepData.question;
-    }
-  }
+
 
   private loadMattressesMatrix() {
     this.http.get('assets/konfigurator.csv', {responseType: 'text'})
@@ -162,7 +170,7 @@ export class DataService {
   }
 
   public getDataAboutMattress(mattress) {
-    var findRow = [];
+    let findRow = [];
     this.mattressesPrices.data.forEach(row => {
       console.log(mattress);
       console.log(row[0]);
