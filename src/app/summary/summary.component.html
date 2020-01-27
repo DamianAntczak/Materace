@@ -1,23 +1,43 @@
 <div *ngIf="showEmbed" class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" [src]="link | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe class="embed-responsive-item" [src]="link | safe" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <h2>MATERACE W WASZYM RYTMIE:</h2>
 <div class="row">
   <div class="col-sm-4" *ngFor="let selected of matchMattresses | keyvalue : valueDescOrder | slice:0:3">
+    <img class="img-fluid" src="https://hilding.pl/png/product/mambo.jpg"/>
     <div class="row">
-      <h3 class="mattress-header text-uppercase">{{selected.key}} {{selected.value}}</h3> <button class="btn btn-play" (click)="playVideo(selected.key)"><fa-icon [icon]="faPlay"></fa-icon> play</button>
+      <div class="col-sm-2">
+        <div class="rounded-circle number-circle">{{selected.value}}</div>
+      </div>
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col-sm-4">
+            <h3 class="mattress-header text-uppercase">{{selected.key}}</h3>
+          </div>
+          <div class="col-sm-8">
+            <button class="btn btn-play" (click)="playVideo(selected.key)">
+              <fa-icon [icon]="faPlay"></fa-icon>
+              play
+            </button>
+          </div>
+        </div>
+        <p>Nowoczesny materac wyposażony w 7-strefowy
+          system drobnych...</p>
+        <a href="https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-pasodoble_39.html" class="text-uppercase">Zobacz
+          więcej</a>
+        <h3>1 399,99 PLN</h3>
+        <a class="btn btn-primary text-uppercase" href="https://hilding.pl/sklepy-z-materacami/">
+          <fa-icon [icon]="faSearch"></fa-icon>
+          znjadź salon
+        </a>
+      </div>
     </div>
-    <img class="img-fluid" src="https://hilding.pl/png/product/mambo.jpg" />
-    <p>Nowoczesny materac wyposażony w 7-strefowy
-      system drobnych...</p>
-    <a href="https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-pasodoble_39.html" class="text-uppercase">Zobacz więcej</a>
-    <h3>1 399,99 PLN</h3>
-    <button class="btn text-uppercase"><fa-icon [icon]="faSearch"></fa-icon> znjadź salon</button>
   </div>
 </div>
 <div class="row">
   <div>
     <button class="btn" (click)="print()">Wydrukuj</button>
-    <button class="btn" (click)="restart()" > Zacznij od nowa</button>
+    <button class="btn" (click)="restart()"> Zacznij od nowa</button>
   </div>
 </div>

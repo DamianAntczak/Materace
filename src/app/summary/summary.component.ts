@@ -25,7 +25,7 @@ export class SummaryComponent implements OnInit {
   }
 
   valueDescOrder = (a: KeyValue<string, number>, b: KeyValue<string, number>): number => {
-    return b.value - a.value;
+    return a.value - b.value;
   }
 
   playVideo(selectedMattress) {

@@ -2,7 +2,10 @@
   <p>krok {{index }} z {{questionSize}}</p>
   <app-question [selectedValue]="selectedValue" [question]="dataService.stepData.question" [answersMap]="dataService.stepData.answerArray" (selectedValuesMapEmitter)="onSelectedValuesMapChange($event)"></app-question>
 
-  <button type="button" class="btn btn-link float-right" (click)="next(dataService.questionArray[index])">{{(index  < questionSize ? 'DALEJ >' : 'SPRAWDz materac dla was' ) | uppercase}}</button>
+  <button type="button" class="btn btn-link float-right"
+          (click)="next(dataService.questionArray[index])">
+    {{(index  < questionSize ? 'DALEJ >' : 'SPRAWDz materac dla was' ) | uppercase}}
+  </button>
 </div>
 
 <div *ngIf="index + 1 > questionSize">
