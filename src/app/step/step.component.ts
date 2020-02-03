@@ -17,7 +17,8 @@ export class StepComponent implements OnInit {
   matchMattresses: Map<string, number> = new Map<string, number>();
   showEmbed = false;
   lastSelectedValue: Answer = undefined;
-  questionSize = 5;
+  questionSize = 5
+  nextButtonDisabled = true;
 
   constructor(public dataService: DataService) {
   }
@@ -36,12 +37,14 @@ export class StepComponent implements OnInit {
       this.matchMattresses = this.dataService.loadProposedMattresses(this.lastSelectedValue.stop, this.questionSize);
     } else if (this.lastSelectedValue !== undefined) {
       this.dataService.loadData(this.index, this.lastSelectedValue.start, this.lastSelectedValue.stop);
+      this.nextButtonDisabled = true;
     }
   }
 
   onSelectedValuesMapChange($event) {
     console.log($event);
     this.lastSelectedValue = $event;
+    this.nextButtonDisabled = false;
+    console.log(this.nextButtonDisabled);
   }
-
 }

@@ -27,6 +27,7 @@
         <a href="https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-pasodoble_39.html" class="text-uppercase">Zobacz
           więcej</a>
         <h3>1 399,99 PLN</h3>
+        <span class="price">Cena zawiera podatek VAT 23%</span>
         <a class="btn btn-primary text-uppercase" href="https://hilding.pl/sklepy-z-materacami/">
           <fa-icon [icon]="faSearch"></fa-icon>
           znjadź salon
@@ -35,9 +36,13 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div>
-    <button class="btn" (click)="print()">Wydrukuj</button>
-    <button class="btn" (click)="restart()"> Zacznij od nowa</button>
+<div class="container-fluid" id="summary-footer">
+  <div class="row justify-content-end mt-5">
+    <div class="col-2">
+      <button type="button" class="btn btn-primary" (click)="print()">Wydrukuj</button>
+    </div>
+    <div class="col-2">
+      <button type="button" class="btn btn-primary" (click)="restart()"> Zacznij od nowa</button>
+    </div>
   </div>
 </div>
