@@ -1,23 +1,23 @@
-materac,cena,link
-Fandango,"1 399,99",https://www.youtube.com/embed/njMj7sY81Ws
-Step,"2 399,99",https://www.youtube.com/embed/12IVRddvIlM
-Zorba,"3 399,99",https://www.youtube.com/embed/M_mOCNpPsSA
-Breakdance,"4 399,99",https://www.youtube.com/embed/1_-GMcbhMx8
-Dobranocka,"5 399,99",
-Kołysanka,"6 399,99",
-Safety Smyk,"7 399,99",
-Melody,"8 399,99",
-Foxtrot,"9 399,99",
-Rock&Roll,"10 399,99",https://www.youtube.com/embed/G3UGBHib8tc
-Cha-Cha,"11 399,99",
-Tango,"12 399,99",https://youtu.be/njMj7sY81Ws
-Flamenco,"13 399,99",https://www.youtube.com/embed/M8FdIMjCrwo
-Conga,"14 399,99",
-Boogie,"15 399,99",
-Modern,"16 399,99",
-Dance,"17 399,99",
-Lambada,"18 399,99",
-Makarena,"19 399,99",https://www.youtube.com/embed/-Oocg4Tsi6Q
-Pasodoble,"20 399,99",https://www.youtube.com/embed/EodQxoPYFcQ
-Rumba,"21 399,99",https://www.youtube.com/embed/watch?v=aRD6hvg4-TE
-Salsa,"22 399,99",https://www.youtube.com/embed/toacBra6DhA
+materac,cena,link,zdjecie,info
+Fandango,"1399,99",https://www.youtube.com/embed/njMj7sY81Ws,https://hilding.pl/png/product/fandango.jpg,https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-fandango_41.html 
+Step,"2399,99",https://www.youtube.com/embed/12IVRddvIlM,https://hilding.pl/png/product/step.jpg,https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-fandango_41.html 
+Zorba,"3399,99",https://www.youtube.com/embed/M_mOCNpPsSA,https://hilding.pl/png/product/zorba.jpg,https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-pasodoble_39.html 
+Breakdance,"4399,99",https://www.youtube.com/embed/1_-GMcbhMx8,https://hilding.pl/png/product/breakdance.jpg,https://hilding.pl/produkt/materace-mlodziezowe_6/hilding-breakdance_46.html 
+Dobranocka,"5399,99",,https://hilding.pl/png/product/dobranocka.jpg,https://hilding.pl/produkt/materace-mlodziezowe_6/hilding-breakdance_46.html 
+Kołysanka,"6399,99",,https://hilding.pl/png/product/kolysanka.jpg,https://hilding.pl/produkt/materace-dzieciece_7/hilding-kolysanka_48.html 
+Safety Smyk,"7399,99",,https://hilding.pl/png/product/safetysmyk.jpg,https://hilding.pl/produkt/materace-dzieciece_7/hilding-safety-smyk_49.html 
+Melody,"8399,99",,,
+Foxtrot,"9399,99",,https://hilding.pl/png/product/foxtrot.jpg,https://hilding.pl/produkt/materace-dzieciece_7/hilding-safety-smyk_49.html 
+Rock&Roll,"10399,99",https://www.youtube.com/embed/G3UGBHib8tc,https://hilding.pl/png/product/rockroll.jpg,https://hilding.pl/produkt/materace-wysokoelastyczne_21/hilding-rock-roll_34.html 
+Cha-Cha,"11399,99",,https://hilding.pl/png/product/cha-cha.jpg,https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-cha-cha_76.html 
+Tango,"12399,99",https://youtu.be/njMj7sY81Ws,https://hilding.pl/png/product/tango.jpg,https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-tango_38.html 
+Flamenco,"13399,99",https://www.youtube.com/embed/M8FdIMjCrwo,https://hilding.pl/png/product/flamenco.jpg,https://hilding.pl/produkt/materace-multipocket_24/hilding-flamenco_43.html 
+Conga,"14399,99",,,
+Boogie,"15399,99",,,
+Modern,"16399,99",,,
+Dance,"17399,99",,,
+Lambada,"18399,99",,,
+Makarena,"19399,99",https://www.youtube.com/embed/-Oocg4Tsi6Q,https://hilding.pl/png/product/makarena.jpg,https://hilding.pl/produkt/materace-multipocket_24/hilding-makarena_44.html 
+Pasodoble,"20399,99",https://www.youtube.com/embed/EodQxoPYFcQ,https://hilding.pl/png/product/013-pasadoble.jpg,https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-pasodoble_39.html
+Rumba,"21399,99",https://www.youtube.com/embed/watch?v=aRD6hvg4-TE,https://hilding.pl/png/product/rumba.jpg,https://hilding.pl/produkt/materace-termoelastyczne_19/hilding-rumba_23.html 
+Salsa,"22399,99",https://www.youtube.com/embed/toacBra6DhA,https://hilding.pl/png/product/salsa.jpg,https://hilding.pl/produkt/materace-termoelastyczne_19/hilding-salsa_21.html

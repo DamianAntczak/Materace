@@ -5,7 +5,7 @@
 <h2>MATERACE W WASZYM RYTMIE:</h2>
 <div class="row">
   <div class="col-sm-4" *ngFor="let selected of matchMattresses | keyvalue : valueDescOrder | slice:0:3">
-    <img class="img-fluid" src="https://hilding.pl/png/product/mambo.jpg"/>
+    <img class="img-fluid" [src]="getMattressData(selected.key)[3]"/>
     <div class="row">
       <div class="col-sm-2">
         <div class="rounded-circle number-circle">{{selected.value}}</div>
@@ -24,7 +24,7 @@
         </div>
         <p>Nowoczesny materac wyposażony w 7-strefowy
           system drobnych...</p>
-        <a href="https://hilding.pl/produkt/materace-kieszeniowe-_23/hilding-pasodoble_39.html" class="text-uppercase">Zobacz
+        <a [href]="getMattressData(selected.key)[4]" class="text-uppercase">Zobacz
           więcej</a>
         <h3>1 399,99 PLN</h3>
         <span class="price">Cena zawiera podatek VAT 23%</span>
@@ -39,10 +39,10 @@
 <div class="container-fluid" id="summary-footer">
   <div class="row justify-content-end mt-5">
     <div class="col-2">
-      <button type="button" class="btn btn-primary" (click)="print()">Wydrukuj</button>
+      <button type="button" class="btn btn-primary" (click)="print()"><fa-icon [icon]="faPrint"></fa-icon> Wydrukuj</button>
     </div>
-    <div class="col-2">
-      <button type="button" class="btn btn-primary" (click)="restart()"> Zacznij od nowa</button>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary" (click)="restart()"><fa-icon [icon]="faRedo"></fa-icon> Zacznij od nowa</button>
     </div>
   </div>
 </div>
