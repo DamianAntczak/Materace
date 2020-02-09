@@ -2,7 +2,7 @@
   <iframe class="embed-responsive-item" [src]="link | safe" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<h2>MATERACE W WASZYM RYTMIE:</h2>
+<h2 id="title">MATERACE W WASZYM RYTMIE:</h2>
 <div class="row">
   <div class="col-sm-4" *ngFor="let selected of matchMattresses | keyvalue : valueDescOrder | slice:0:3">
     <img class="img-fluid" [src]="getMattressData(selected.key)[3] || 'https://via.placeholder.com/690x342.png?text=Brak%20zdj%C4%99cia'" />
@@ -22,15 +22,19 @@
             </button>
           </div>
         </div>
-        <p>{{getMattressData(selected.key)[5] | slice:0:60}}...</p>
-        <a [href]="getMattressData(selected.key)[4]" class="text-uppercase">Zobacz
+        <p class="short-description">{{getMattressData(selected.key)[5] | slice:0:60}}...</p>
+        <a [href]="getMattressData(selected.key)[4]" class="text-uppercase see-more">Zobacz
           więcej</a>
-        <h3>1 399,99 PLN</h3>
-        <span class="price">Cena zawiera podatek VAT 23%</span>
-        <a class="btn btn-primary text-uppercase" href="https://hilding.pl/sklepy-z-materacami/">
-          <fa-icon [icon]="faSearch"></fa-icon>
-          znjadź salon
-        </a>
+        <h3 class="price-product">
+          {{getMattressData(selected.key)[1]}} PLN
+          <p class="price-tax">Cena zawiera podatek VAT 23%</p>
+        </h3>
+        <div class="row">
+          <a class="btn btn-primary text-uppercase" href="https://hilding.pl/sklepy-z-materacami/">
+            <fa-icon [icon]="faSearch"></fa-icon>
+            znjadź salon
+          </a>
+        </div>
       </div>
     </div>
   </div>
