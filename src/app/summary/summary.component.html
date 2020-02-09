@@ -5,15 +5,15 @@
 <h2>MATERACE W WASZYM RYTMIE:</h2>
 <div class="row">
   <div class="col-sm-4" *ngFor="let selected of matchMattresses | keyvalue : valueDescOrder | slice:0:3">
-    <img class="img-fluid" [src]="getMattressData(selected.key)[3]"/>
-    <div class="row">
+    <img class="img-fluid" [src]="getMattressData(selected.key)[3] || 'https://via.placeholder.com/690x342.png?text=Brak%20zdj%C4%99cia'" />
+    <div class="row" id="description">
       <div class="col-sm-2">
         <div class="rounded-circle number-circle">{{selected.value}}</div>
       </div>
       <div class="col-sm-10">
         <div class="row">
           <div class="col-sm-4">
-            <h3 class="mattress-header text-uppercase">{{selected.key}}</h3>
+            <h3 class="mattress-header text-uppercase"><b>{{selected.key}}</b></h3>
           </div>
           <div class="col-sm-8">
             <button class="btn btn-play" (click)="playVideo(selected.key)">
@@ -22,8 +22,7 @@
             </button>
           </div>
         </div>
-        <p>Nowoczesny materac wyposażony w 7-strefowy
-          system drobnych...</p>
+        <p>{{getMattressData(selected.key)[5] | slice:0:60}}...</p>
         <a [href]="getMattressData(selected.key)[4]" class="text-uppercase">Zobacz
           więcej</a>
         <h3>1 399,99 PLN</h3>
