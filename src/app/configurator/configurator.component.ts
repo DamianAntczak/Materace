@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatRadioButton} from '@angular/material/radio/typings/radio';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-configurator',
@@ -9,6 +10,7 @@ import {MatRadioButton} from '@angular/material/radio/typings/radio';
 export class ConfiguratorComponent implements OnInit {
   index = 1;
   selectedValue: MatRadioButton;
+  footerShow = false;
 
   constructor() { }
 
@@ -16,9 +18,10 @@ export class ConfiguratorComponent implements OnInit {
     this.index = 1;
   }
 
-  onloadNextClick() {
+  onloadNextClick(isSummary: boolean) {
     console.log(this.selectedValue);
     this.selectedValue = undefined;
     console.log('onloadNextClick:' + this.selectedValue);
+    this.footerShow = isSummary;
   }
 }

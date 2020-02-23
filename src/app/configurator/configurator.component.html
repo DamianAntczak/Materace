@@ -1,4 +1,5 @@
 <app-header></app-header>
 <div class="container" style="padding-top: 35px">
-  <app-step [index]="index" [selectedValue]="selectedValue" (onloadNextClick)="onloadNextClick()"></app-step>
+  <app-step #stepComponent [index]="index" [selectedValue]="selectedValue" (onloadNextClick)="onloadNextClick($event)" ></app-step>
 </div>
+<app-footer *ngIf="footerShow" (onloadPrintClick)="stepComponent.print()"></app-footer>

@@ -15,6 +15,7 @@ import {StartComponent} from './start/start.component';
 import { ConfiguratorComponent } from './configurator/configurator.component';
 import { SummaryComponent } from './summary/summary.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   {path: 'start', component: StartComponent},
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     ConfiguratorComponent,
     HeaderComponent,
     SummaryComponent,
-    SafePipe
+    SafePipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
